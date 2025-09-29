@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Smart Water Safety</title>
+  <style>
+    body, html {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      color: #e6edf3;
+      height: 100%;
+      width: 100%;
+      background: url('https://images.unsplash.com/photo-1508685096489-7aacd43bd3b0?auto=format&fit=crop&w=1600&q=80') no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Overlay for transparency */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(13, 17, 23, 0.6); /* semi-transparent dark overlay */
+      z-index: 0;
+    }
+
+    header {
+      background: linear-gradient(90deg, #00c6ff, #0072ff);
+      color: white;
+      text-align: center;
+      padding: 15px;
+      font-size: 24px;
+      font-weight: bold;
+      z-index: 1;
+      position: relative;
+    }
+
+    nav {
+      background: rgba(22, 27, 34, 0.9);
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      padding: 10px;
+      z-index: 1;
+      position: relative;
+    }
+
+    nav a {
+      color: #e6edf3;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 8px 14px;
+      border-radius: 6px;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      background: #238636;
+      color: white;
+    }
+
+    .container {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      z-index: 1;
+      position: relative;
+    }
+
+    .hero {
+      text-align: center;
+      background: rgba(28, 33, 40, 0.85); /* semi-transparent dark box */
+      color: white;
+      padding: 80px 30px;
+      border-radius: 12px;
+      box-shadow: 0px 6px 20px rgba(0,0,0,0.6);
+      max-width: 700px;
+      width: 100%;
+    }
+
+    .hero h1 {
+      font-size: 42px;
+      margin-bottom: 15px;
+    }
+
+    .btn-action {
+      background: linear-gradient(90deg, #00c6ff, #0072ff);
+      border: none;
+      padding: 12px 22px;
+      border-radius: 8px;
+      color: white;
+      font-weight: bold;
+      transition: 0.3s;
+      cursor: pointer;
+      font-size: 18px;
+    }
+
+    .btn-action:hover {
+      background: linear-gradient(90deg, #0072ff, #00c6ff);
+      box-shadow: 0px 0px 12px #00c6ff;
+    }
+
+    footer {
+      text-align: center;
+      padding: 12px;
+      background: rgba(22, 27, 34, 0.9);
+      color: #8b949e;
+      font-size: 14px;
+      border-top: 1px solid #30363d;
+      z-index: 1;
+      position: relative;
+    }
+  </style>
+</head>
+<body>
+  <header>💧 Smart Water Safety Solution</header>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="ai.html">AI Detection</a>
+    <a href="community.html">Community</a>
+    <a href="alerts.html">Alerts</a>
+    <a href="data.html">Disease Data</a>
+    <a href="notifications.html">Notifications</a>
+  </nav>
+  <div class="container">
+    <div class="hero">
+      <h1>🌍 Clean Water, Healthy Community</h1>
+      <p>AI-powered water safety & community health platform</p>
+      <a href="ai.html"><button class="btn-action">🚀 Get Started</button></a>
+    </div>
+  </div>
+  <footer>© 2025 Smart Water Safety Solution</footer>
+</body>
+</html>

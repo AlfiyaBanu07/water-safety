@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Notifications - Smart Water Safety</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      width: 100%;
+      font-family: 'Poppins', sans-serif;
+      color: #e6edf3;
+      background: url('https://images.unsplash.com/photo-1508685096489-7aacd43bd3b0?auto=format&fit=crop&w=1600&q=80') no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Semi-transparent overlay */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(13, 17, 23, 0.7);
+      z-index: 0;
+    }
+
+    /* Make content above overlay */
+    .container, header, nav, footer {
+      position: relative;
+      z-index: 1;
+    }
+
+    header {
+      background: linear-gradient(90deg, #00c6ff, #0072ff);
+      color: white;
+      text-align: center;
+      padding: 18px;
+      font-size: 26px;
+      font-weight: bold;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    }
+
+    nav {
+      background: #161b22;
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      padding: 10px;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: #e6edf3;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 8px 14px;
+      border-radius: 6px;
+      transition: 0.3s;
+      font-size: 14px;
+    }
+
+    nav a:hover {
+      background: #238636;
+      color: white;
+    }
+
+    .container {
+      flex: 1;
+      width: 100%;
+      max-width: 1200px;
+      margin: 30px auto 120px;
+      padding: 0 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+
+    .card {
+      background-color: #161b22;
+      padding: 25px 30px;
+      border-radius: 14px;
+      box-shadow: 0px 6px 20px rgba(0,0,0,0.5);
+    }
+
+    .card h2 {
+      margin-bottom: 20px;
+      font-size: 22px;
+      color: #e6edf3;
+      border-bottom: 1px solid #30363d;
+      padding-bottom: 8px;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+      margin-bottom: 15px;
+    }
+
+    .form-grid input, .form-grid select, .form-grid textarea {
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid #30363d;
+      background-color: #1f242b;
+      color: #e6edf3;
+      font-size: 14px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    textarea {
+      grid-column: 1 / -1;
+      min-height: 100px;
+      resize: vertical;
+    }
+
+    .btn-action {
+      background: linear-gradient(90deg, #00c6ff, #0072ff);
+      border: none;
+      padding: 14px 24px;
+      border-radius: 8px;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 15px;
+      transition: 0.3s;
+      align-self: flex-start;
+    }
+
+    .btn-action:hover {
+      background: linear-gradient(90deg, #0072ff, #00c6ff);
+      box-shadow: 0px 0px 14px #00c6ff;
+    }
+
+    #notifFeed {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .notif-card {
+      background-color: #1f242b;
+      padding: 15px 20px;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.4);
+      transition: 0.2s;
+    }
+
+    .notif-card:hover {
+      background-color: #262b34;
+    }
+
+    .notif-detail {
+      margin-bottom: 5px;
+      font-size: 14px;
+    }
+
+    .notif-detail strong {
+      color: #00c6ff;
+    }
+
+    footer {
+      text-align: center;
+      padding: 14px;
+      background: #161b22;
+      color: #8b949e;
+      font-size: 13px;
+      border-top: 1px solid #30363d;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1;
+    }
+
+    @media(max-width:768px){
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+      .btn-action {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>🔔 Notifications</header>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="ai.html">AI Detection</a>
+    <a href="community.html">Community</a>
+    <a href="alerts.html">Alerts</a>
+    <a href="data.html">Disease Data</a>
+    <a href="notifications.html">Notifications</a>
+  </nav>
+
+  <div class="container">
+    <!-- Notification Form -->
+    <div class="card">
+      <h2>Post Notification</h2>
+      <div class="form-grid">
+        <input type="text" id="notifName" placeholder="Your Name">
+        <input type="text" id="notifArea" placeholder="Area of Concern">
+        <textarea id="notifDesc" placeholder="Notification Description"></textarea>
+        <select id="notifTo">
+          <option value="All">All</option>
+          <option value="Doctors">Doctors</option>
+          <option value="ASHA Workers">ASHA Workers</option>
+          <option value="Volunteers">Volunteers</option>
+        </select>
+      </div>
+      <button class="btn-action" onclick="postNotification()">Post Notification</button>
+    </div>
+
+    <!-- Notification Feed -->
+    <div id="notifFeed"></div>
+  </div>
+
+  <footer>© 2025 Smart Water Safety Solution</footer>
+
+  <script>
+    function postNotification() {
+      const name = document.getElementById("notifName").value.trim();
+      const desc = document.getElementById("notifDesc").value.trim();
+      const area = document.getElementById("notifArea").value.trim();
+      const to = document.getElementById("notifTo").value;
+
+      if(name && desc && area) {
+        const feed = document.getElementById("notifFeed");
+        const newPost = document.createElement("div");
+        newPost.className = "notif-card";
+
+        newPost.innerHTML = `
+          <div class="notif-detail"><strong>From:</strong> ${name}</div>
+          <div class="notif-detail"><strong>Area:</strong> ${area}</div>
+          <div class="notif-detail"><strong>To:</strong> ${to}</div>
+          <div class="notif-detail"><strong>Description:</strong> ${desc}</div>
+        `;
+
+        feed.prepend(newPost);
+
+        // Clear inputs
+        document.getElementById("notifName").value = '';
+        document.getElementById("notifDesc").value = '';
+        document.getElementById("notifArea").value = '';
+        document.getElementById("notifTo").value = 'All';
+      }
+    }
+  </script>
+</body>
+</html>
